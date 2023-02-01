@@ -3,16 +3,19 @@ const cors = require("cors");
 const axios = require("axios");
 
 const app = express();
-app.options("*", cors());
+app.use(cors());
+// app.options("*", cors());
 
 app.get("/", (req, res) => {
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  //   res.setHeader("Access-Control-Allow-Credentials", true);
+  //   res.setHeader("Access-Control-Allow-Origin", "*");
   res.status(200).send("running perfectly");
 });
 
 app.get("/proxy", async (req, res) => {
   try {
+    // res.setHeader("Access-Control-Allow-Credentials", true);
+    // res.setHeader("Access-Control-Allow-Origin", "*");
     const response = await axios({
       method: req.method,
       url: req.query.url,
